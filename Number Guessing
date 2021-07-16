@@ -1,0 +1,57 @@
+#include<iostream>
+#include<cstdlib>
+#include<ctime>
+
+
+using namespace std;
+
+int main()
+{
+    int myNum=0;
+    srand(time(NULL));
+    int randomNumber = rand()%100;
+    cout<<randomNumber;
+    int guesses=5;
+    bool flag=false;
+    do
+    {
+        cout<<"Enter your Number(1-100): ";
+        cin>>myNum;
+        if((myNum<=0) || (myNum>100))
+           {
+               cout<<"Please guess the number between 1-100"<<endl;
+           }
+        else{
+            if(myNum==randomNumber)
+            {
+                cout<<"Congratulation! You guess correct number"<<endl;
+                flag=true;
+                break;
+            }
+            else if(myNum>randomNumber)
+            {
+                cout<<"Your number is too large"<<endl;
+                --guesses;
+                cout<<"Remaining Guesses: "<<guesses<<endl;
+            }
+            else{
+                cout<<"Your number is too small"<<endl;
+                 --guesses;
+                cout<<"Remaining Guesses: "<<guesses<<endl;
+
+            }
+           }
+    }while(guesses>0);
+
+
+    if(!flag)
+    {
+        cout<<"You loose the game";
+    }
+
+
+
+
+
+    return 0;
+}
